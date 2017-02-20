@@ -1,0 +1,24 @@
+{
+  "name": "racuni",
+  "version": "1.0.0",
+  "description": "Racuni Application",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.14.1",
+    "node": "^0.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivanalexic/racuni.git"
+  },
+  "author": "Ivan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivanalexic/racuni/issues"
+  },
+  "homepage": "https://github.com/ivanalexic/racuni#readme"
+}

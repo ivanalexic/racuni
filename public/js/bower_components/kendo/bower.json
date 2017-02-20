@@ -1,0 +1,17 @@
+{
+  "name": "kendo",
+  "authors": [
+    "Ferhat YAban"
+  ],
+  "description": "Pusula kendo modules",
+  "main": "..",
+  "moduleType": [],
+  "keywords": [
+    "kendo",
+    "pusula",
+    "it"
+  ],
+  "license": "MIT",
+  "homepage": "pusulait.com",
+  "private": false
+}

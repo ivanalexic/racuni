@@ -1,0 +1,23 @@
+.k-grid td {
+    /*padding: .4em .6em;*/
+}
+
+.k-grid a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #666;
+}
+
+.k-grid .glyphicon {
+    padding-right: 5px;
+}
+
+.k-grid .k-button {
+    font-size: 12px;
+    /*padding: 8px;*/
+    /*border: 0;*/
+}
+
+.k-grid .k-button span {
+    /*margin-top: -2px;*/
+}

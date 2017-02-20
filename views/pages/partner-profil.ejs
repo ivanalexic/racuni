@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include ../partials/head %>
+	<title>Računi - Partner</title>
+</head>
+<body>
+
+<% include ../partials/header %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12">
+			<h4>PARTNER</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-4">
+			<label for="naziv">Naziv</label>
+			<input id="naziv" name="naziv" value="<%= partner.naziv %>" type="text" class="form-control" />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-4">
+			<label for="korisnik">Korisnik</label>
+			<input id="korisnik" name="korisnik" value="<%= partner.korisnik %>" type="text" class="form-control" />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6 col-sm-3 col-md-2">
+			<label for="dan_izdavanja">Dan izdavanja</label>
+			<input id="dan_izdavanja" name="dan_izdavanja" value="<%= partner.dan_izdavanja %>" type="text" class="form-control" />
+		</div>
+		<div class="col-xs-6 col-sm-3 col-md-2">
+			<label for="dan_valute">Dan valute</label>
+			<input id="dan_valute" name="dan_valute" value="<%= partner.dan_valute %>" type="text" class="form-control" />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-8 col-sm-4 col-md-3">
+			<label for="popust_id">Popust</label>
+			<select id="popust_id" name="popust_id" value="<%= partner.popust_id %>" type="text" class="form-control">
+				<% popusti.forEach(function(popust) { %>
+				<option value="<%= popust.id %>"><%= popust.tip_popusta %></option>
+				<% }); %>
+			</select>
+		</div>
+		<div class="col-xs-4 col-sm-2 col-md-1">
+			<label for="popust">Iznos</label>
+			<input id="popust" name="popust" value="<%= partner.popust %>" type="text" class="form-control" />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-4">
+			<label for="tekuci_racun">Tekući račun partnera</label>
+			<input id="tekuci_racun" name="tekuci_racun" value="<%= partner.tekuci_racun %>" type="text" class="form-control" />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4 col-sm-2 col-md-1">
+			<label for="model">Model</label>
+			<input id="model" name="model" value="<%= partner.model %>" type="text" class="form-control" />
+		</div>
+		<div class="col-xs-8 col-sm-4 col-md-3">
+			<label for="poziv_na_broj">Poziv na broj</label>
+			<input id="poziv_na_broj" name="poziv_na_broj" value="<%= partner.poziv_na_broj %>" type="text" class="form-control" />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-4">
+			<label for="ponavljanje">Ponavljanje računa</label>
+			<input id="ponavljanje" name="ponavljanje" value="<%= partner.ponavljanje %>" type="text" class="form-control" />
+		</div>
+	</div>
+	<br />
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-4">
+			<div class="pull-right">
+				<button type="button" class="btn btn-default btn-sm pull-right" id="updatePartner">
+					<span class="glyphicon glyphicon-floppy-save"></span>
+					Sačuvaj
+				</button>
+				<button type="button" class="btn btn-danger btn-sm" style="margin-right: 10px;" data-toggle="modal" data-target="#confirmDeleteModal">
+					<span class="glyphicon glyphicon-floppy-remove"></span>
+					Izbriši
+				</button>
+			</div>
+			<button type="button" class="btn btn-link btn-sm pull-left" onclick="location.href='/partneri'">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				Nazad
+			</button>
+		</div>
+	</div>
+</div>
+
+<% include ../partials/footer %>
+
+<% include ../partials/body %>
+
+<script src="js/parner-profil.js"></script>
+
+</body>
+</html>
