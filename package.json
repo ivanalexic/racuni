@@ -5,7 +5,10 @@
   "main": "server.js",
   "dependencies": {
     "express": "^4.14.1",
-    "node": "^0.0.0"
+    "body-parser": ">=1.0.0",
+    "nano-uuid": "1.4.7",
+    "ejs": ">=1.0.0",
+    "mysql": ">=1.0.0"
   },
   "devDependencies": {},
   "scripts": {

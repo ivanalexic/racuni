@@ -41,7 +41,7 @@
 			<label for="popust_id">Popust</label>
 			<select id="popust_id" name="popust_id" value="<%= partner.popust_id %>" type="text" class="form-control">
 				<% popusti.forEach(function(popust) { %>
-				<option value="<%= popust.id %>"><%= popust.tip_popusta %></option>
+				<option value="<%= popust.id %>" <%= partner.popust_id == popust.id ? 'selected=selected' : '' %>><%= popust.tip_popusta %></option>
 				<% }); %>
 			</select>
 		</div>
