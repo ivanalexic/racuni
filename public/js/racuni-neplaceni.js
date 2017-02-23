@@ -4,7 +4,7 @@
 
 $('document').ready(function() {
 	$('.k-grid-createNew').on('click', function() {
-		location.href = '/novo-zaduzenje';
+		location.href = '/zaduzenje-novo';
 	})
 });
 

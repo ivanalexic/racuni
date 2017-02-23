@@ -4,7 +4,6 @@
 
 var express     = require('express');
 var bodyParser  = require('body-parser');
-var http        = require("http");
 var uuid        = require("node-uuid");
 var ejs         = require('ejs');
 

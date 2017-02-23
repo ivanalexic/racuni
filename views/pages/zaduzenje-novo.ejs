@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
 
+	<% include ../partials/head-kendo %>
+	<% include ../partials/head-parsley %>
 	<% include ../partials/head-common %>
 
-	<title>Racuni</title>
+	<title>Računi - Neplaćeni</title>
 
 </head>
 <body>
@@ -14,7 +16,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12">
-			<h4>Ups... Something went wrong!</h4>
+			<h4>Unos novog zaduženja</h4>
 		</div>
 	</div>
 </div>
@@ -22,6 +24,9 @@
 <% include ../partials/footer %>
 
 <% include ../partials/body-common %>
+<% include ../partials/body-kendo %>
+<% include ../partials/body-parsley %>
+<script src="js/zaduzenje-novo.js"></script>
 
 </body>
 </html>

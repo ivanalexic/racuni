@@ -63,16 +63,6 @@ var grid = $("#partneriGrid").kendoGrid({
 		field: "popust",
 		title: "Popust"
 	},{
-		width: 80,
-		field: "created_at",
-		format: "{0:dd.MM.yyyy.}",
-		title: "Kreiran"
-	},{
-		width: 80,
-		field: "updated_at",
-		format: "{0:dd.MM.yyyy.}",
-		title: "Izmenjen"
-	},{
 		width: 150,
 		field: "tekuci_racun",
 		title: "Tekući račun"
@@ -84,5 +74,15 @@ var grid = $("#partneriGrid").kendoGrid({
 		width: 200,
 		field: "poziv_na_broj",
 		title: "Poziv na broj"
+	},{
+		width: 80,
+		field: "created_at",
+		format: "{0:dd.MM.yyyy.}",
+		title: "Kreiran"
+	},{
+		width: 80,
+		field: "updated_at",
+		format: "{0:dd.MM.yyyy.}",
+		title: "Izmenjen"
 	}]
 }).data("kendoGrid");

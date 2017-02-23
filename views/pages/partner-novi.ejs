@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<% include ../partials/head %>
+
+	<% include ../partials/head-parsley %>
+	<% include ../partials/head-common %>
+
 	<title>Računi - Novi Partner</title>
+
 </head>
 <body>
 
@@ -11,70 +15,81 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12">
-			<h4>UNOS NOVOG PARTNERA</h4>
+			<h4>Unos novog partnera</h4>
+		</div>
+	</div>
+	<form id="partner-form" data-parsley-validate="">
+		<div class="row">
+			<div class="col-xs-12 col-sm-5 col-md-4">
+				<label for="naziv">Naziv</label>
+				<input id="naziv" name="naziv" type="text" class="form-control" data-parsley-trigger="blur" required="" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-10 col-md-9">
+				<hr />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-5 col-md-4">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<label for="korisnik">Korisnik</label>
+						<input id="korisnik" name="korisnik" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 col-md-6">
+						<label for="dan_izdavanja">Dan izdavanja</label>
+						<input id="dan_izdavanja" name="dan_izdavanja" type="text" class="input-sm form-control" />
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6">
+						<label for="dan_valute">Dan valute</label>
+						<input id="dan_valute" name="dan_valute" type="text" class="input-sm form-control" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-8 col-sm-8 col-md-8">
+						<label for="popust_id">Popust</label>
+						<select id="popust_id" name="popust_id" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="">
+							<% popusti.forEach(function(popust) { %>
+							<option value="<%= popust.id %>"><%= popust.tip_popusta %></option>
+							<% }); %>
+						</select>
+					</div>
+					<div class="col-xs-4 col-sm-4 col-md-4">
+						<label for="popust">Iznos</label>
+						<input id="popust" name="popust" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" />
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-5 col-md-offset-1 col-md-4">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<label for="tekuci_racun">Tekući račun partnera</label>
+						<input id="tekuci_racun" name="tekuci_racun" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4 col-sm-4 col-md-4">
+						<label for="model">Model</label>
+						<input id="model" name="model" type="text" class="input-sm form-control" />
+					</div>
+					<div class="col-xs-8 col-sm-8 col-md-8">
+						<label for="poziv_na_broj">Poziv na broj</label>
+						<input id="poziv_na_broj" name="poziv_na_broj" type="text" class="input-sm form-control" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<div class="row">
+		<div class="col-xs-12 col-sm-10 col-md-9">
+			<hr />
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-12 col-sm-6 col-md-4">
-			<label for="naziv">Naziv</label>
-			<input id="naziv" name="naziv" type="text" class="form-control" />
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-12 col-sm-6 col-md-4">
-			<label for="korisnik">Korisnik</label>
-			<input id="korisnik" name="korisnik" type="text" class="form-control" />
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-6 col-sm-3 col-md-2">
-			<label for="dan_izdavanja">Dan izdavanja</label>
-			<input id="dan_izdavanja" name="dan_izdavanja" type="text" class="form-control" />
-		</div>
-		<div class="col-xs-6 col-sm-3 col-md-2">
-			<label for="dan_valute">Dan valute</label>
-			<input id="dan_valute" name="dan_valute" type="text" class="form-control" />
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-8 col-sm-4 col-md-3">
-			<label for="popust_id">Popust</label>
-			<select id="popust_id" name="popust_id" type="text" class="form-control">
-				<% popusti.forEach(function(popust) { %>
-				<option value="<%= popust.id %>"><%= popust.tip_popusta %></option>
-				<% }); %>
-			</select>
-		</div>
-		<div class="col-xs-4 col-sm-2 col-md-1">
-			<label for="popust">Iznos</label>
-			<input id="popust" name="popust" type="text" class="form-control" />
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-12 col-sm-6 col-md-4">
-			<label for="tekuci_racun">Tekući račun partnera</label>
-			<input id="tekuci_racun" name="tekuci_racun" type="text" class="form-control" />
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-4 col-sm-4 col-md-1">
-			<label for="model">Model</label>
-			<input id="model" name="model" type="text" class="form-control" />
-		</div>
-		<div class="col-xs-8 col-sm-2 col-md-3">
-			<label for="poziv_na_broj">Poziv na broj</label>
-			<input id="poziv_na_broj" name="poziv_na_broj" type="text" class="form-control" />
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-12 col-sm-6 col-md-4">
-			<label for="ponavljanje">Ponavljanje računa</label>
-			<input id="ponavljanje" name="ponavljanje" type="text" class="form-control" />
-		</div>
-	</div>
-	<br />
-	<div class="row">
-		<div class="col-xs-12 col-sm-6 col-md-4">
+		<div class="col-xs-12 col-sm-10 col-md-9">
 			<button type="button" class="btn btn-link btn-sm pull-left" onclick="location.href='/partneri'">
 				<span class="glyphicon glyphicon-chevron-left"></span>
 				Nazad
@@ -89,8 +104,8 @@
 
 <% include ../partials/footer %>
 
-<% include ../partials/body %>
-
+<% include ../partials/body-common %>
+<% include ../partials/body-parsley %>
 <script src="js/partner-novi.js"></script>
 
 </body>

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" href="js/bower_components/kendo/styles/web/kendo.common-bootstrap.min.css" />
-	<link rel="stylesheet" href="js/bower_components/kendo/styles/web/kendo.bootstrap.min.css">
-	<% include ../partials/head %>
+
+	<% include ../partials/head-kendo %>
+	<% include ../partials/head-common %>
+
 	<title>Računi - Partneri</title>
+
 </head>
 <body>
 
@@ -13,12 +15,12 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12">
-			<h4>PREGLED PARTNERA</h4>
+			<h4>Pregled svih partnera</h4>
 			<p class="text-gray">Kliknite na &nbsp; <span class='glyphicon glyphicon-pencil'></span> &nbsp; u tabeli, da biste podesili podrazumevane vrednosti za svakog od partnera.</p>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-12 col-sm-10 col-md-12">
+		<div class="col-xs-12 col-sm-12 col-md-12">
 			<div id="partneriGrid"></div>
 		</div>
 	</div>
@@ -26,10 +28,8 @@
 
 <% include ../partials/footer %>
 
-<% include ../partials/body %>
-
-<script src="js/bower_components/kendo/js/kendo.all.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.6.0/jszip.min.js"></script>
+<% include ../partials/body-common %>
+<% include ../partials/body-kendo %>
 <script src="js/partneri.js"></script>
 
 </body>

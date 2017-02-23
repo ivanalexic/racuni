@@ -46,7 +46,6 @@ $('document').ready(function() {
 		var tekuci_racun = $('#tekuci_racun').val();
 		var model = $('#model').val();
 		var poziv_na_broj = $('#poziv_na_broj').val();
-		var repeat = $('#repeat').val();
 
 		$.ajax({
 			type: 'POST',
@@ -60,8 +59,7 @@ $('document').ready(function() {
 				popust : popust,
 				tekuci_racun : tekuci_racun,
 				model : model,
-				poziv_na_broj : poziv_na_broj,
-				repeat : repeat
+				poziv_na_broj : poziv_na_broj
 			},
 			traditional: true,
 			dataType: 'json',

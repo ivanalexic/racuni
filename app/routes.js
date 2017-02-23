@@ -11,14 +11,14 @@ module.exports = function(app, uuid) {
 		res.render('pages/home');
 	});
 
-	// ========= /neplaceni-racuni ========= //
-	app.get('/neplaceni-racuni', function(req, res) {
-		res.render('pages/neplaceni-racuni', {neplaceniRacuniTab: true});
+	// ========= /racuni-neplaceni ========= //
+	app.get('/racuni-neplaceni', function(req, res) {
+		res.render('pages/racuni-neplaceni', {neplaceniRacuniTab: true});
 	});
 
-	// ============ /svi-racuni ============ //
-	app.get('/svi-racuni', function(req, res) {
-		res.render('pages/svi-racuni', {sviRacuniTab: true});
+	// ============ /racuni-svi ============ //
+	app.get('/racuni-svi', function(req, res) {
+		res.render('pages/racuni-svi', {sviRacuniTab: true});
 	});
 
 	// ============ /izvestaji ============= //
@@ -67,9 +67,9 @@ module.exports = function(app, uuid) {
 
 	});
 
-	// ========== /novo-zaduzenje ========== //
-	app.get('/novo-zaduzenje', function(req, res) {
-		res.render('pages/novo-zaduzenje');
+	// ========== /zaduzenje-novo ========== //
+	app.get('/zaduzenje-novo', function(req, res) {
+		res.render('pages/zaduzenje-novo');
 	});
 
 	/**

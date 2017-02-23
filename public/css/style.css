@@ -22,6 +22,14 @@ body p, a, label, span, th, td, button {
     font-size: 12px;
 }
 
+nav {
+    box-shadow: #999 0 0 15px;
+}
+
+hr {
+    box-shadow: cornflowerblue 0 7px 16px;
+}
+
 footer {
     position: absolute;
     bottom: 0;
@@ -41,6 +49,14 @@ label {
     padding-top: 10px;
 }
 
+.container {
+    min-height: 80vh;
+    margin-top: 80px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    box-shadow: #999 0 11px 20px;
+}
+
 .btn-link {
     text-decoration: none;
     color: inherit;
@@ -53,4 +69,15 @@ label {
 
 .text-gray {
     color: #555;
+}
+
+.parsley-errors-list li {
+    color: #ff0000;
+    font-size: 10px;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1070px;
+    }
 }

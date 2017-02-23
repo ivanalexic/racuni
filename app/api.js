@@ -32,22 +32,6 @@ module.exports = function(app, pool, uuid) {
 
 		pool.getConnection(function(err, connection) {
 
-			var data = {
-				id: uuid.v4(),
-				naziv : req.body.naziv,
-				korisnik : req.body.korisnik,
-				dan_izdavanja : req.body.dan_izdavanja,
-				dan_valute : req.body.dan_valute,
-				popust_id : req.body.popust_id,
-				popust : req.body.popust,
-				tekuci_racun : req.body.tekuci_racun,
-				model : req.body.model,
-				poziv_na_broj : req.body.poziv_na_broj,
-				ponavljanje : req.body.ponavljanje
-			};
-
-			console.log(req.body);
-
 			connection.query('INSERT INTO partneri SET ?', req.body, function(err, rows) {
 				connection.release();
 				if (err) {
@@ -65,19 +49,6 @@ module.exports = function(app, pool, uuid) {
 	app.post('/api/partneri/update/:id', function(req, res) {
 
 		pool.getConnection(function(err, connection) {
-
-			var data = {
-				naziv : req.body.naziv,
-				korisnik : req.body.korisnik,
-				dan_izdavanja : req.body.dan_izdavanja,
-				dan_valute : req.body.dan_valute,
-				popust_id : req.body.popust_id,
-				popust : req.body.popust,
-				tekuci_racun : req.body.tekuci_racun,
-				model : req.body.model,
-				poziv_na_broj : req.body.poziv_na_broj,
-				ponavljanje : req.body.ponavljanje
-			};
 
 			connection.query('UPDATE partneri SET ? WHERE id = ?', [req.body, req.params.id], function(err, rows) {
 				connection.release();

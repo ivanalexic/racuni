@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
 
+	<% include ../partials/head-kendo %>
 	<% include ../partials/head-common %>
 
-	<title>Racuni</title>
+	<title>Računi - Neplaćeni</title>
 
 </head>
 <body>
@@ -14,7 +15,12 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12">
-			<h4>Ups... Something went wrong!</h4>
+			<h4>Pregled svih neplaćenih računa</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-10 col-md-12">
+			<div id="neplaceniRacuniGrid"></div>
 		</div>
 	</div>
 </div>
@@ -22,6 +28,8 @@
 <% include ../partials/footer %>
 
 <% include ../partials/body-common %>
+<% include ../partials/body-kendo %>
+<script src="js/racuni-neplaceni.js"></script>
 
 </body>
 </html>
