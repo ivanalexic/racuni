@@ -17,7 +17,7 @@ var grid = $("#neplaceniRacuniGrid").kendoGrid({
 	dataSource: {
 		transport: {
 			read: {
-				url: "/api/partneri",
+				url: "/api/partners",
 				dataType: "json"
 			}
 		},

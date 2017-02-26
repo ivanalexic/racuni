@@ -4,11 +4,11 @@
 
 $('document').ready(function() {
 	$('.k-grid-createNew').on('click', function() {
-		location.href = '/partner-novi';
+		location.href = '/partner-new';
 	})
 });
 
-var grid = $("#partneriGrid").kendoGrid({
+var grid = $("#partnersGrid").kendoGrid({
 	toolbar: [{ name: "excel", text: "Sačuvaj kao Excel (.xlsx)"},{ name: "createNew", text: "<span class='glyphicon glyphicon-plus'></span>Novi Partner"}],
 	excel: {
 		fileName: "Partneri.xlsx",
@@ -17,11 +17,15 @@ var grid = $("#partneriGrid").kendoGrid({
 	dataSource: {
 		transport: {
 			read: {
-				url: "/api/partneri",
+				url: "/api/partners",
 				dataType: "json"
 			}
 		},
-		pageSize: 10,
+		pageSize: 15,
+		sort: {
+			field: "partner_name",
+			dir: "asc"
+		},
 		schema: {
 			model: {
 				fields: {
@@ -51,20 +55,20 @@ var grid = $("#partneriGrid").kendoGrid({
 	resizable: true,
 	columns: [{
 		width: 150,
-		field: "naziv",
-		template: "<a href='/partner-profil?id=#=id#'><span class='glyphicon glyphicon-pencil'></span></a>&nbsp;#=naziv#",
+		field: "partner_name",
+		template: "<a href='/partner-profile?id=#=id#' title='Izmeniti'><span class='glyphicon glyphicon-pencil'></span></a>&nbsp;#=partner_name#",
 		title: "Naziv"
 	},{
 		width: 150,
-		field: "korisnik",
-		title: "korisnik"
+		field: "customer_name",
+		title: "Korisnik"
 	},{
 		width: 80,
-		field: "popust",
+		field: "discount",
 		title: "Popust"
 	},{
 		width: 150,
-		field: "tekuci_racun",
+		field: "account_number",
 		title: "Tekući račun"
 	},{
 		width: 70,
@@ -72,7 +76,7 @@ var grid = $("#partneriGrid").kendoGrid({
 		title: "Model"
 	},{
 		width: 200,
-		field: "poziv_na_broj",
+		field: "reference_number",
 		title: "Poziv na broj"
 	},{
 		width: 80,

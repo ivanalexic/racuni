@@ -2,7 +2,7 @@
  * Created by ivan on 2/19/17.
  */
 
-module.exports = function(app, uuid) {
+module.exports = function(app) {
 
 	var pool = require('./db');
 
@@ -11,40 +11,40 @@ module.exports = function(app, uuid) {
 		res.render('pages/home');
 	});
 
-	// ========= /racuni-neplaceni ========= //
-	app.get('/racuni-neplaceni', function(req, res) {
-		res.render('pages/racuni-neplaceni', {neplaceniRacuniTab: true});
+	// ========= /invoices-unpaid ========= //
+	app.get('/invoices-unpaid', function(req, res) {
+		res.render('pages/invoices-unpaid', {unpaidInvoicesTab: true});
 	});
 
-	// ============ /racuni-svi ============ //
-	app.get('/racuni-svi', function(req, res) {
-		res.render('pages/racuni-svi', {sviRacuniTab: true});
+	// ============ /invoices-all ============ //
+	app.get('/invoices-all', function(req, res) {
+		res.render('pages/invoices-all', {allInvoicesTab: true});
 	});
 
-	// ============ /izvestaji ============= //
-	app.get('/izvestaji', function(req, res) {
-		res.render('pages/izvestaji', {izvestajiTab: true});
+	// ============ /reports ============= //
+	app.get('/reports', function(req, res) {
+		res.render('pages/reports', {reportsTab: true});
 	});
 
-	// ============ /partneri ============== //
-	app.get('/partneri', function(req, res) {
-		res.render('pages/partneri', {partneriTab: true});
+	// ============ /partners ============== //
+	app.get('/partners', function(req, res) {
+		res.render('pages/partners', {partnersTab: true});
 	});
 
-	// ======= /partner-profil (?id) ======= //
-	app.get('/partner-profil', function(req, res) {
+	// ======= /partner-profile (?id) ======= //
+	app.get('/partner-profile', function(req, res) {
 
 		pool.getConnection(function(err, connection) {
 
 			// get partner by id
-			connection.query('SELECT * FROM partneri where id = "' + req.query.id + '"', function(err, partneri) {
+			connection.query('SELECT * FROM partners where id = "' + req.query.id + '"', function(err, partners) {
 
-				if (partneri.length > 0) {
-					// get popusti before page render
-					connection.query('SELECT * FROM popusti', function(err, popusti) {
+				if (partners.length > 0) {
+					// get discounts before page render
+					connection.query('SELECT * FROM discounts', function(err, discounts) {
 						// console.log(pool._freeConnections.indexOf(connection)); // check free connections
 						connection.release();
-						res.render('pages/partner-profil', {partneriTab: true, partner: partneri[0], popusti: popusti});
+						res.render('pages/partner-profile', {partnersTab: true, partner: partners[0], discounts: discounts});
 					});
 				} else {
 					res.render('pages/error');
@@ -54,27 +54,27 @@ module.exports = function(app, uuid) {
 
 	});
 
-	// ========== /partner-novi ============ //
-	app.get('/partner-novi', function(req, res) {
+	// ========== /partner-new ============ //
+	app.get('/partner-new', function(req, res) {
 
 		pool.getConnection(function(err, connection) {
-			// get popusti before page render
-			connection.query('SELECT * FROM popusti', function(err, popusti) {
+			// get discounts before page render
+			connection.query('SELECT * FROM discounts', function(err, discounts) {
 				connection.release();
-				res.render('pages/partner-novi', {partneriTab: true, popusti: popusti});
+				res.render('pages/partner-new', {partnersTab: true, discounts: discounts});
 			});
 		});
 
 	});
 
-	// ========== /zaduzenje-novo ========== //
-	app.get('/zaduzenje-novo', function(req, res) {
-		res.render('pages/zaduzenje-novo');
+	// ========== /debit-new ========== //
+	app.get('/debit-new', function(req, res) {
+		res.render('pages/debit-new');
 	});
 
 	/**
-	 * Load app.js
-	 * Pass in app, pool, uuid
+	 * Load api.js
+	 * Pass in app, pool
 	 */
-	require('./api.js')(app, pool, uuid);
+	require('./api.js')(app, pool);
 };

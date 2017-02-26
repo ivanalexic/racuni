@@ -4,7 +4,6 @@
 
 var express     = require('express');
 var bodyParser  = require('body-parser');
-var uuid        = require("node-uuid");
 var ejs         = require('ejs');
 
 var app = express();
@@ -14,6 +13,8 @@ app.use(express.static('public'));
  * Set the view engine to ejs
  */
 app.set('view engine', 'ejs');
+
+app.set('json spaces', 2);
 
 /**
  * bodyParser.urlencoded(options)
@@ -32,9 +33,9 @@ app.use(bodyParser.json());
 
 /**
  * Load routes.js
- * Pass in app, pool, uuid
+ * Pass in app
  */
-require('./app/routes.js')(app, uuid);
+require('./app/routes.js')(app);
 
 
 /**

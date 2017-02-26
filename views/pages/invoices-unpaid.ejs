@@ -3,7 +3,6 @@
 <head>
 
 	<% include ../partials/head-kendo %>
-	<% include ../partials/head-parsley %>
 	<% include ../partials/head-common %>
 
 	<title>Računi - Neplaćeni</title>
@@ -16,7 +15,12 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12">
-			<h4>Unos novog zaduženja</h4>
+			<h4>Pregled svih neplaćenih računa</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-10 col-md-12">
+			<div id="neplaceniRacuniGrid"></div>
 		</div>
 	</div>
 </div>
@@ -25,8 +29,7 @@
 
 <% include ../partials/body-common %>
 <% include ../partials/body-kendo %>
-<% include ../partials/body-parsley %>
-<script src="js/zaduzenje-novo.js"></script>
+<script src="js/invoices-unpaid.js"></script>
 
 </body>
 </html>

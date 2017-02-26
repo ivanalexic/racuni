@@ -10,16 +10,16 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/">Početna</a>
+				<a class="navbar-brand" href="/">Računi</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="<%= typeof neplaceniRacuniTab != 'undefined' ? 'active' : '' %>"><a class="bold" href="/racuni-neplaceni"><strong>Računi za plaćanje</strong></a></li>
-					<li class="<%= typeof sviRacuniTab != 'undefined' ? 'active' : '' %>"><a class="bold" href="/racuni-svi"><strong>Svi računi</strong></a></li>
-					<li class="<%= typeof izvestajiTab != 'undefined' ? 'active' : '' %>"><a class="bold" href="/izvestaji"><strong>Izveštaji</strong></a></li>
-					<li class="<%= typeof partneriTab != 'undefined' ? 'active' : '' %>"><a class="bold" href="/partneri"><strong>Partneri</strong></a></li>
+					<li class="<%= typeof unpaidInvoicesTab != 'undefined' ? 'active' : '' %>"><a class="bold" href="/invoices-unpaid"><strong>Računi za plaćanje</strong></a></li>
+					<li class="<%= typeof allInvoicesTab != 'undefined' ? 'active' : '' %>"><a class="bold" href="/invoices-all"><strong>Svi računi</strong></a></li>
+					<li class="<%= typeof reportsTab != 'undefined' ? 'active' : '' %>"><a class="bold" href="/reports"><strong>Izveštaji</strong></a></li>
+					<li class="<%= typeof partnersTab != 'undefined' ? 'active' : '' %>"><a class="bold" href="/partners"><strong>Partneri</strong></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">

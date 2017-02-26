@@ -22,8 +22,8 @@
 	<form id="partner-form" data-parsley-validate="">
 		<div class="row">
 			<div class="col-xs-12 col-sm-5 col-md-4">
-				<label for="naziv">Naziv</label>
-				<input id="naziv" name="naziv" value="<%= partner.naziv %>" type="text" class="form-control" data-parsley-trigger="blur" required="" />
+				<label for="partner_name">Naziv</label>
+				<input id="partner_name" name="partner_name" value="<%= partner.partner_name %>" type="text" class="form-control" data-parsley-trigger="blur" required="" />
 			</div>
 		</div>
 		<div class="row">
@@ -35,48 +35,48 @@
 			<div class="col-xs-12 col-sm-5 col-md-4">
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12">
-						<label for="korisnik">Korisnik</label>
-						<input id="korisnik" name="korisnik" value="<%= partner.korisnik %>" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" />
+						<label for="customer_name">Korisnik</label>
+						<input id="customer_name" name="customer_name" value="<%= partner.customer_name %>" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" />
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-6 col-sm-6 col-md-6">
-						<label for="dan_izdavanja">Dan izdavanja</label>
-						<select id="dan_izdavanja" name="dan_izdavanja" type="text" class="input-sm form-control">
+						<label for="issue_day">Dan izdavanja</label>
+						<select id="issue_day" name="issue_day" type="text" class="input-sm form-control">
 							<% for(var i=1; i < 32; i++) { %>
-							<option value="<%= i %>" <%= i == partner.dan_izdavanja ? 'selected=selected' : '' %>><%= i %>. u mesecu</option>
+							<option value="<%= i %>" <%= i == partner.issue_day ? 'selected=selected' : '' %>><%= i %>. u mesecu</option>
 							<% }; %>
 						</select>
 					</div>
 					<div class="col-xs-6 col-sm-6 col-md-6">
-						<label for="dan_valute">Dan valute</label>
-						<select id="dan_valute" name="dan_valute" type="text" class="input-sm form-control">
+						<label for="due_day">Dan valute</label>
+						<select id="due_day" name="due_day" type="text" class="input-sm form-control">
 							<% for(var i=1; i < 32; i++) { %>
-							<option value="<%= i %>" <%= i == partner.dan_valute ? 'selected=selected' : '' %>><%= i %>. u mesecu</option>
+							<option value="<%= i %>" <%= i == partner.due_day ? 'selected=selected' : '' %>><%= i %>. u mesecu</option>
 							<% }; %>
 						</select>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-8 col-sm-8 col-md-8">
-						<label for="popust_id">Popust</label>
-						<select id="popust_id" name="popust_id" value="<%= partner.popust_id %>" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="">
-							<% popusti.forEach(function(popust) { %>
-							<option value="<%= popust.id %>" <%= partner.popust_id == popust.id ? 'selected=selected' : '' %>><%= popust.tip_popusta %></option>
+						<label for="discount_id">Popust</label>
+						<select id="discount_id" name="discount_id" value="<%= partner.discount_id %>" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="">
+							<% discounts.forEach(function(discount) { %>
+							<option value="<%= discount.id %>" <%= partner.discount_id == discount.id ? 'selected=selected' : '' %>><%= discount.discount_type %></option>
 							<% }); %>
 						</select>
 					</div>
 					<div class="col-xs-4 col-sm-4 col-md-4">
-						<label for="popust">Iznos</label>
-						<input id="popust" name="popust" value="<%= partner.popust %>" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" />
+						<label for="discount">Iznos</label>
+						<input id="discount" name="discount" value="<%= partner.discount %>" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" />
 					</div>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-5 col-md-offset-1 col-md-4">
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12">
-						<label for="tekuci_racun">Tekući račun partnera</label>
-						<input id="tekuci_racun" name="tekuci_racun" value="<%= partner.tekuci_racun %>" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" />
+						<label for="account_number">Tekući račun partnera</label>
+						<input id="account_number" name="account_number" value="<%= partner.account_number %>" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" />
 					</div>
 				</div>
 				<div class="row">
@@ -85,8 +85,8 @@
 						<input id="model" name="model" value="<%= partner.model %>" type="text" class="input-sm form-control" />
 					</div>
 					<div class="col-xs-8 col-sm-8 col-md-8">
-						<label for="poziv_na_broj">Poziv na broj</label>
-						<input id="poziv_na_broj" name="poziv_na_broj" value="<%= partner.poziv_na_broj %>" type="text" class="input-sm form-control" />
+						<label for="reference_number">Poziv na broj</label>
+						<input id="reference_number" name="reference_number" value="<%= partner.reference_number %>" type="text" class="input-sm form-control" />
 					</div>
 				</div>
 			</div>
@@ -109,7 +109,7 @@
 					Izbriši
 				</button>
 			</div>
-			<button type="button" class="btn btn-link btn-sm pull-left" onclick="location.href='/partneri'">
+			<button type="button" class="btn btn-link btn-sm pull-left" onclick="location.href='/partners'">
 				<span class="glyphicon glyphicon-chevron-left"></span>
 				Nazad
 			</button>
@@ -122,7 +122,7 @@
 <% include ../partials/body-common %>
 <% include ../partials/body-kendo %>
 <% include ../partials/body-parsley %>
-<script src="js/parner-profil.js"></script>
+<script src="js/partner-profile.js"></script>
 
 </body>
 </html>
