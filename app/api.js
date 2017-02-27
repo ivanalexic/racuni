@@ -39,7 +39,7 @@ module.exports = function(app, pool) {
 	// ======== create new partner ========= //
 	app.post('/api/partners/create', function(req, res) {
 
-		req.body.id = uuid.v4();
+		req.body.partner_id = uuid.v4();
 
 		pool.getConnection(function(err, connection) {
 
@@ -92,12 +92,81 @@ module.exports = function(app, pool) {
 
 	});
 
-	// ==== GET invoices by partner id ==== //
-	app.get('/api/partners/:id/invoices', function(req, res) {
+	// ==== GET all invoices by partner id ==== //
+	app.get('/api/partners/:id/invoices/all', function(req, res) {
 
 		pool.getConnection(function(err, connection) {
 
-			connection.query('SELECT * FROM invoices WHERE partner_id = "' + req.params.id + '"', function(err, rows) {
+			connection.query('SELECT * FROM invoices JOIN partners ON invoices.partner_id = partners.partner_id JOIN statuses ON invoices.status_id = statuses.status_id JOIN discounts ON invoices.discount_id = discounts.discount_id WHERE invoices.partner_id = "' + req.params.id + '"', function(err, rows) {
+				connection.release();
+				if (err) {
+					console.log('Error while getting invoices for partner: %s ', err);
+				} else {
+					res.json(rows);
+				}
+			});
+
+		});
+
+	});
+
+	// ==== GET all unpaid invoices by partner id ==== //
+	app.get('/api/partners/:id/invoices/unpaid/:filter', function(req, res) {
+
+		var id = req.params.id;
+		var filter = req.params.filter;
+		var fromDate = req.query.fromDate;
+		var toDate = req.query.toDate;
+		var byDate = req.query.byDate;
+
+		console.log('Getting ' + filter + ' unpaid invoices by ' + byDate + ' for partner_id=' + id + ' from ' + fromDate + ' to ' + toDate);
+
+		var request = 'SELECT * FROM invoices ' +
+			'JOIN partners ON invoices.partner_id = partners.partner_id ' +
+			'JOIN statuses ON invoices.status_id = statuses.status_id ' +
+			'JOIN discounts ON invoices.discount_id = discounts.discount_id ' +
+			'WHERE invoices.partner_id = "' + id + '" ' +
+			'AND (invoices.status_id = "0" OR invoices.status_id = "3") ';
+
+		if (filter == 'due') {
+			request += 'AND invoices.due_date >= "' + byDate + '" ';
+		} else if (filter == 'overdue') {
+			request += 'AND invoices.due_date < "' + byDate + '" ';
+		}
+
+		if (fromDate || toDate) {
+			if (fromDate && !toDate) {
+				request += 'AND invoices.invoice_date >= "' + fromDate + '"';
+			} else if (!fromDate && toDate) {
+				request += 'AND invoices.invoice_date <= "' + toDate + '"';
+			} else {
+				request += 'AND (invoices.invoice_date >= "' + fromDate + '" AND invoices.invoice_date <= "' + toDate + '")';
+			}
+		}
+
+		console.log(request);
+
+		pool.getConnection(function(err, connection) {
+
+			connection.query(request, function(err, rows) {
+				connection.release();
+				if (err) {
+					console.log('Error while getting invoices for partner: %s ', err);
+				} else {
+					res.json(rows);
+				}
+			});
+
+		});
+
+	});
+
+	// ==== GET all unpaid invoices due by partner id ==== //
+	app.get('/api/partners/:id/invoices/due', function(req, res) {
+
+		pool.getConnection(function(err, connection) {
+
+			connection.query('SELECT * FROM invoices JOIN partners ON invoices.partner_id = partners.partner_id JOIN statuses ON invoices.status_id = statuses.status_id JOIN discounts ON invoices.discount_id = discounts.discount_id WHERE invoices.partner_id = "' + req.params.id + '"', function(err, rows) {
 				connection.release();
 				if (err) {
 					console.log('Error while getting invoices for partner: %s ', err);
@@ -161,7 +230,7 @@ module.exports = function(app, pool) {
 	// ======== create new partner ========= //
 	app.post('/api/invoices/create', function(req, res) {
 
-		req.body.id = uuid.v4();
+		req.body.invoice_id = uuid.v4();
 
 		pool.getConnection(function(err, connection) {
 

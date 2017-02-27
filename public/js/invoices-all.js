@@ -1,14 +1,10 @@
 /**
- * Created by ivan on 2/20/17.
+ * Created by ivan on 2/26/17.
  */
 
-$('document').ready(function() {
-	$('.k-grid-createNew').on('click', function() {
-		location.href = '/zaduzenje-novo';
-	})
-});
+var id = urlParam('id');
 
-var grid = $("#invoicesUnpaidGrid").kendoGrid({
+var grid = $("#invoicesGrid").kendoGrid({
 	toolbar: [{ name: "excel", text: "Sačuvaj kao Excel (.xlsx)"},{ name: "createNew", text: "<span class='glyphicon glyphicon-plus'></span>Novo zaduženje"}],
 	excel: {
 		fileName: "Racuni.xlsx",
@@ -17,7 +13,7 @@ var grid = $("#invoicesUnpaidGrid").kendoGrid({
 	dataSource: {
 		transport: {
 			read: {
-				url: "/api/invoices/unpaid",
+				url: "/api/partners/" + id + "/invoices/all",
 				dataType: "json"
 			}
 		},

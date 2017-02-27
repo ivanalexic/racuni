@@ -56,7 +56,7 @@ var grid = $("#partnersGrid").kendoGrid({
 	columns: [{
 		width: 150,
 		field: "partner_name",
-		template: "<a href='/partner-profile?id=#=id#' title='Izmeniti'><span class='glyphicon glyphicon-pencil'></span></a>&nbsp;#=partner_name#",
+		template: "<a href='/partner-profile?id=#=partner_id#' title='Izmeniti'><span class='glyphicon glyphicon-pencil'></span></a>&nbsp;<a href='/invoices-all?id=#=partner_id#' title='Svi računi'>#=partner_name#</a>",
 		title: "Naziv"
 	},{
 		width: 150,
