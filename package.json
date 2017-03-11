@@ -6,6 +6,7 @@
   "dependencies": {
     "express": "^4.14.1",
     "body-parser": ">=1.0.0",
+    "cookie-parser": ">=1.0.0",
     "nano-uuid": "1.4.7",
     "ejs": ">=1.0.0",
     "mysql": ">=1.0.0"
