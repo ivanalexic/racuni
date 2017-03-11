@@ -15,7 +15,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12">
-			<h4>Pregled svih neplaćenih računa</h4>
+			<h4><%= lang.all_unpaid_invoices_heading %></h4>
 		</div>
 	</div>
 	<div class="row">
@@ -24,6 +24,11 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	var export_excel = "<%- lang.export_excel  %>";
+	var new_invoice = "<%- lang.new_invoice  %>";
+</script>
 
 <% include ../partials/footer %>
 

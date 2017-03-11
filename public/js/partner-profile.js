@@ -21,7 +21,7 @@ $('document').ready(function() {
 
 		$.ajax({
 			type: 'POST',
-			url: '/api/partners/update/' + id,
+			url: '/api/partners/' + id + '/update',
 			data: {
 				partner_name : partner_name,
 				customer_name : customer_name,
@@ -61,7 +61,7 @@ $('document').ready(function() {
 function deletePartner() {
 	$.ajax({
 		type: 'POST',
-		url: '/api/partners/delete/' + id,
+		url: '/api/partners/' + id + '/delete',
 		traditional: true,
 		dataType: 'json',
 		success: function(res) {

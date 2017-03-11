@@ -64,7 +64,6 @@ $('document').ready(function() {
 			traditional: true,
 			dataType: 'json',
 			success: function(res) {
-				console.log(res);
 				if(res.serverStatus == '2') {
 					location.href = '/partners';
 				}

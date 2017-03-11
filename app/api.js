@@ -16,7 +16,7 @@ module.exports = function(app, pool) {
 		var id = req.params.id;
 		var query;
 		if (typeof (id) !== 'undefined') {
-			query = 'SELECT * FROM partners WHERE id = "' + id + '"' ;
+			query = 'SELECT * FROM partners WHERE partner_id = "' + id + '"' ;
 		} else {
 			query = 'SELECT * FROM partners';
 		}
@@ -61,7 +61,7 @@ module.exports = function(app, pool) {
 
 		pool.getConnection(function(err, connection) {
 
-			connection.query('UPDATE partners SET ? WHERE id = ?', [req.body, req.params.id], function(err, rows) {
+			connection.query('UPDATE partners SET ? WHERE partner_id = ?', [req.body, req.params.id], function(err, rows) {
 				connection.release();
 				if (err) {
 					console.log('Error while updating partner: %s ', err);
@@ -79,7 +79,7 @@ module.exports = function(app, pool) {
 
 		pool.getConnection(function(err, connection) {
 
-			connection.query('DELETE FROM partners WHERE id = ?', req.params.id, function(err, rows) {
+			connection.query('DELETE FROM partners WHERE partner_id = ?', req.params.id, function(err, rows) {
 				connection.release();
 				if (err) {
 					console.log('Error while deleting partner: %s ', err);

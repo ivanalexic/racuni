@@ -15,11 +15,11 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12">
-			<h4>Pregled svih partnera</h4>
+			<h4><%= lang.partners_heading %></h4>
 			<p class="text-gray">
-				Kliknite na
+				<%= lang.click %>
 				&nbsp;<span class='glyphicon glyphicon-pencil'></span>&nbsp;
-				ispred naziva partnera da biste ga izmenili ili izbrisali.
+				<%= lang.next_to_partner %> <%= lang.to_edit_or_delete %>.
 			</p>
 		</div>
 	</div>
@@ -29,6 +29,11 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	var export_excel = "<%- lang.export_excel  %>";
+	var new_partner = "<%- lang.new_partner  %>";
+</script>
 
 <% include ../partials/footer %>
 

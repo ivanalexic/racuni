@@ -4,8 +4,15 @@
 
 var id = urlParam('id');
 
+$('document').ready(function() {
+	$('.k-grid-createNew').on('click', function() {
+		console.log('click');
+		location.href = '/invoice-new';
+	})
+});
+
 var grid = $("#invoicesGrid").kendoGrid({
-	toolbar: [{ name: "excel", text: "Sačuvaj kao Excel (.xlsx)"},{ name: "createNew", text: "<span class='glyphicon glyphicon-plus'></span>Novo zaduženje"}],
+	toolbar: [{ name: "excel", text: export_excel + " (.xlsx)"},{ name: "createNew", text: "<span class='glyphicon glyphicon-plus'></span>" + new_invoice}],
 	excel: {
 		fileName: "Racuni.xlsx",
 		allPages: true

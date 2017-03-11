@@ -1,11 +1,10 @@
 html {
     position: relative;
-    min-height: 100vh;
+    min-height: 100%;
 }
 
 body {
     /* Margin bottom by footer height */
-    margin: 60px 0 60px;
     background: rgba(0, 53, 171, 0.5);
     /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(rgb(248, 248, 248), rgba(0, 53, 171, 0.3));
@@ -24,6 +23,26 @@ body p, a, label, span, th, td, button {
 
 nav {
     box-shadow: #999 0 0 15px;
+}
+
+.flag-en {
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAWCAYAAAChWZ5EAAABN0lEQVRIS+2Vv0oDQRDGf3M572wF8WpfIIh4AX0HS6ONNkERBMFStFI7E0RNKv+Ago0PklhKHiKY1tKQW/GyObjK3bvANbfNMPDNzPftzM7KMcu7H+w8KxZd4uNMDJG2//uCR50jjTc2QwX7UuN0FLGgixsHp4DCHNucZAkeSkhLKcbcdRuIwNV6P0501q0a+4LL63doRaD98BbjEwL3vQYCXGoC572qse/g8pKdwI1SjAiYKLBRPpXs4NNhw+oG3jVaQtIEbJRPK1bwaWcnUM5AOQPlDKRnwOoxJ79Fjj1Qo6MUPwSsxZsPKrGNGBv77so8t5+rVtyTRXTRelKe73Gwt2WVIC84+QsKJ9AE9aemnleSZXzSgsIJFN6Cwgk04QsILFs4K/hArmFT4BFYmlVWwzwDBYe/lprysoxE758AAAAASUVORK5CYII=');
+    height: 15px;
+    width: 17px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-right: 10px;
+}
+
+.flag-rs {
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAYCAYAAACbU/80AAACoUlEQVRIS+2WW0gUYRTH/zODm9aYurvtqq2Mha7uaoRFRFRGeMEeDcyKLshiLxHdoKyHgkIkwagoSGyh8kUKHywffJB8kFTKVsK9oG2WqOUqK66zF2fXmY3ZdNHAS1NrPjRP832c8///zvkOMx9RCahJoBVANlb3MQtAPlEF9P4D87lSzSJAUFwdXd3q0TDr9x9gbXegLSEVQ/EUhmXkggnZ7BegcfHIm/gqeXKWnQHRvFMVtaTB7vGAZIgwgE5/LUhRMqRmHltgFjtYAdplQdGBTKgUNAZftoMp2R+KsXf1o+PbFNxxerDMHUld+Gx5FsojFge4CtplxTYvi5wTBzH21grVXj18o5OwvX4Hs0IOd5wOLFMdGQDK+RSqkcaw+L5dW+BwuvFpYDy8N5Z8GLyyLDIAQXcbkgfuhsWzAxwCGSnoGxgL741oq0BGS/uCL3sEMscjKBwt0MXKQCUrUHzlOjxuDz7UP4aT5WDu+w6H5iQE+ZHIdGDD8E1snDCBjpGhIDcDhdX14FxT6Ko+j+Y2K9weDk51Efzqs5EBUFtKQPLTKM3PwtDzFhwfdoDnfGivKIM/Zh1etVrgpRm4tj6MDEDcl4tYz9pRuJNBIrMJacUGBFgPBlsb8L65GzY/4FTlwZ944c8AbtUYQ3/DG5cNxHylcm36AxA4p5TT2K5Lgr/DCmXBDnxs7MSIMgEcF4BAEuVGW/8TKQRzvsRiAKLoGV26KSggR3zXJMVjdJzFzAz/048kX9TZ+kqlmIs5KwIQA0/n7qmlWM8pyuuLFtdcisYeNem6b+w2STv8WeIVA4jxhqws+bQ27RIvoLahqWlIatXz834L4G8Y/qqxdgBu1xh7g6t/I55rSA9Rea9OzfPkGwD6SLR6Cc0eihIO/QAJQjDd+sS1TQAAAABJRU5ErkJggg==');
+    height: 15px;
+    width: 17px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-right: 10px;
 }
 
 hr {
@@ -50,11 +69,8 @@ label {
 }
 
 .container {
-    min-height: 80vh;
-    margin-top: 80px;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    box-shadow: #999 0 11px 20px;
+    padding-top: 60px;
+    padding-bottom: 50px;
 }
 
 .btn-link {

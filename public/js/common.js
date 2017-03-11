@@ -11,3 +11,23 @@ function urlParam(param) {
 		return results[1];
 	}
 }
+
+function changeLanguage(referer) {
+
+	var lang = $(referer).attr('data-lang');
+
+	$.ajax({
+		type: 'POST',
+		url: '/change-language',
+		data: {
+			lang : lang
+		},
+		traditional: true,
+		dataType: 'json',
+		success: function(res) {
+			if(res.status == '200') {
+				location.reload();
+			}
+		}
+	});
+}

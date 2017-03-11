@@ -16,13 +16,13 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12">
-			<h4>Izmena podataka o partneru</h4>
+			<h4><%= lang.partner_profile_heading %></h4>
 		</div>
 	</div>
 	<form id="partner-form" data-parsley-validate="">
 		<div class="row">
 			<div class="col-xs-12 col-sm-5 col-md-4">
-				<label for="partner_name">Naziv</label>
+				<label for="partner_name"><%= lang.name %></label>
 				<input id="partner_name" name="partner_name" value="<%= partner.partner_name %>" type="text" class="form-control" data-parsley-trigger="blur" required="" />
 			</div>
 		</div>
@@ -35,39 +35,39 @@
 			<div class="col-xs-12 col-sm-5 col-md-4">
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12">
-						<label for="customer_name">Korisnik</label>
+						<label for="customer_name"><%= lang.user %></label>
 						<input id="customer_name" name="customer_name" value="<%= partner.customer_name %>" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" />
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-6 col-sm-6 col-md-6">
-						<label for="issue_day">Dan izdavanja</label>
+						<label for="issue_day"><%= lang.invoice_day %></label>
 						<select id="issue_day" name="issue_day" type="text" class="input-sm form-control">
 							<% for(var i=1; i < 32; i++) { %>
-							<option value="<%= i %>" <%= i == partner.issue_day ? 'selected=selected' : '' %>><%= i %>. u mesecu</option>
+							<option value="<%= i %>" <%= i == partner.issue_day ? 'selected=selected' : '' %>><%= i %>. <%= lang.in_month %></option>
 							<% }; %>
 						</select>
 					</div>
 					<div class="col-xs-6 col-sm-6 col-md-6">
-						<label for="due_day">Dan valute</label>
+						<label for="due_day"><%= lang.due_day %></label>
 						<select id="due_day" name="due_day" type="text" class="input-sm form-control">
 							<% for(var i=1; i < 32; i++) { %>
-							<option value="<%= i %>" <%= i == partner.due_day ? 'selected=selected' : '' %>><%= i %>. u mesecu</option>
+							<option value="<%= i %>" <%= i == partner.due_day ? 'selected=selected' : '' %>><%= i %>. <%= lang.in_month %></option>
 							<% }; %>
 						</select>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-8 col-sm-8 col-md-8">
-						<label for="discount_id">Popust</label>
+						<label for="discount_id"><%= lang.discount %></label>
 						<select id="discount_id" name="discount_id" value="<%= partner.discount_id %>" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="">
 							<% discounts.forEach(function(discount) { %>
-							<option value="<%= discount.id %>" <%= partner.discount_id == discount.id ? 'selected=selected' : '' %>><%= discount.discount_type %></option>
+							<option value="<%= discount.discount_id %>" <%= partner.discount_id == discount.discount_id ? 'selected=selected' : '' %>><%= discount.discount_type %></option>
 							<% }); %>
 						</select>
 					</div>
 					<div class="col-xs-4 col-sm-4 col-md-4">
-						<label for="discount">Iznos</label>
+						<label for="discount"><%= lang.amount %></label>
 						<input id="discount" name="discount" value="<%= partner.discount %>" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" />
 					</div>
 				</div>
@@ -75,17 +75,17 @@
 			<div class="col-xs-12 col-sm-5 col-md-offset-1 col-md-4">
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12">
-						<label for="account_number">Tekući račun partnera</label>
+						<label for="account_number"><%= lang.account_number %></label>
 						<input id="account_number" name="account_number" value="<%= partner.account_number %>" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" />
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-4 col-sm-4 col-md-4">
-						<label for="model">Model</label>
+						<label for="model"><%= lang.model %></label>
 						<input id="model" name="model" value="<%= partner.model %>" type="text" class="input-sm form-control" />
 					</div>
 					<div class="col-xs-8 col-sm-8 col-md-8">
-						<label for="reference_number">Poziv na broj</label>
+						<label for="reference_number"><%= lang.reference_number %></label>
 						<input id="reference_number" name="reference_number" value="<%= partner.reference_number %>" type="text" class="input-sm form-control" />
 					</div>
 				</div>
@@ -102,16 +102,16 @@
 			<div class="pull-right">
 				<button type="button" class="btn btn-success btn-sm pull-right" id="updatePartner">
 					<span class="glyphicon glyphicon-floppy-save"></span>
-					Sačuvaj
+					<%= lang.save %>
 				</button>
 				<button type="button" class="btn btn-danger btn-sm" style="margin-right: 10px;" data-toggle="modal" data-target="#confirmDeleteModal">
 					<span class="glyphicon glyphicon-floppy-remove"></span>
-					Izbriši
+					<%= lang.delete %>
 				</button>
 			</div>
 			<button type="button" class="btn btn-link btn-sm pull-left" onclick="location.href='/partners'">
 				<span class="glyphicon glyphicon-chevron-left"></span>
-				Nazad
+				<%= lang.back %>
 			</button>
 		</div>
 	</div>

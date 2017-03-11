@@ -2,11 +2,13 @@
  * Created by ivan on 2/18/17.
  */
 
-var express     = require('express');
-var bodyParser  = require('body-parser');
-var ejs         = require('ejs');
+var express         = require('express');
+var bodyParser      = require('body-parser');
+var ejs             = require('ejs');
+var cookieParser    = require('cookie-parser');
 
 var app = express();
+app.use(cookieParser());
 app.use(express.static('public'));
 
 /**
@@ -41,5 +43,5 @@ require('./app/routes.js')(app);
 /**
  * Start server on port 8080
  */
-app.listen(8000);
+app.listen(8080);
 console.log('Server running');

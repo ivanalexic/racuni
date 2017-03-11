@@ -9,7 +9,7 @@ $('document').ready(function() {
 });
 
 var grid = $("#partnersGrid").kendoGrid({
-	toolbar: [{ name: "excel", text: "Sačuvaj kao Excel (.xlsx)"},{ name: "createNew", text: "<span class='glyphicon glyphicon-plus'></span>Novi Partner"}],
+	toolbar: [{ name: "excel", text: export_excel + " (.xlsx)"},{ name: "createNew", text: "<span class='glyphicon glyphicon-plus'></span>" + new_partner}],
 	excel: {
 		fileName: "Partneri.xlsx",
 		allPages: true
@@ -21,7 +21,7 @@ var grid = $("#partnersGrid").kendoGrid({
 				dataType: "json"
 			}
 		},
-		pageSize: 15,
+		pageSize: 10,
 		sort: {
 			field: "partner_name",
 			dir: "asc"

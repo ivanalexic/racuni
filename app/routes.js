@@ -6,6 +6,51 @@ module.exports = function(app) {
 
 	var pool = require('./db');
 
+	var lang;
+	var lang_en = require('../locales/en.json');
+	var lang_rs = require('../locales/rs.json');
+
+	app.all('*', function(req, res, next) {
+
+		var langParam = req.query.lang;
+
+		if (typeof(langParam) == 'undefined') {
+
+			var storedLang = req.cookies['BILLS_LANG'];
+
+			if (typeof(storedLang) !== 'undefined') {
+				langParam = storedLang;
+			} else {
+				langParam = 'rs';
+				res.cookie('BILLS_LANG', langParam, { maxAge: 2592000000, httpOnly: true });
+			}
+		} else {
+			res.cookie('BILLS_LANG', langParam, { maxAge: 2592000000, httpOnly: true });
+		}
+
+		switch (langParam) {
+			case 'rs':
+				lang = lang_rs;
+				break;
+			case 'en':
+				lang = lang_en;
+				break;
+			default:
+				lang = lang_rs;
+		}
+
+		res.locals.lang = lang;
+		res.locals.langParam = langParam;
+		next();
+	});
+
+	// ========== /changeLanguage ========== //
+	app.post('/change-language', function(req, res) {
+		res.cookie('BILLS_LANG', req.body.lang, { maxAge: 2592000000, httpOnly: true });
+		res.end('{"success" : "Updated Successfully", "status" : 200}');
+		//res.redirect(req.get('referer'));
+	});
+
 	// ============== /index =============== //
 	app.get('/', function(req, res) {
 		res.render('pages/home');
@@ -19,6 +64,11 @@ module.exports = function(app) {
 	// ============ /invoices-all ============ //
 	app.get('/invoices-all', function(req, res) {
 		res.render('pages/invoices-all', {allInvoicesTab: true});
+	});
+
+	// ============= /invoice-new ============ //
+	app.get('/invoice-new', function(req, res) {
+		res.render('pages/invoice-new', {allInvoicesTab: true});
 	});
 
 	// ============ /reports ============= //
@@ -37,8 +87,9 @@ module.exports = function(app) {
 		pool.getConnection(function(err, connection) {
 
 			// get partner by id
-			connection.query('SELECT * FROM partners where id = "' + req.query.id + '"', function(err, partners) {
+			connection.query('SELECT * FROM partners where partner_id = "' + req.query.id + '"', function(err, partners) {
 
+				console.log(partners);
 				if (partners.length > 0) {
 					// get discounts before page render
 					connection.query('SELECT * FROM discounts', function(err, discounts) {
