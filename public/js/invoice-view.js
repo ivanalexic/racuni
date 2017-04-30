@@ -1,5 +1,5 @@
 /**
- * Created by ivan on 2/20/17.
+ * Created by ivan on 4/07/17.
  */
 
 $('document').ready(function() {
@@ -13,20 +13,22 @@ $('document').ready(function() {
 		});
 	});
 
-	$('#partner_name').change(function() {
+	$.get('/api/invoices/' + urlParam('id'), function(res) {
 
-		$.get('/api/partners/' + $(this).val(), function(res) {
-
-			var partner = res[0];
-
-			$('#customer_name').val(partner.customer_name);
-			$('#account_number').val(partner.account_number);
-			$('#model').val(partner.model);
-			$('#reference_number').val(partner.reference_number);
-			$('#discount_id').val(partner.discount_id);
-			$('#discount').val(partner.discount);
-		});
-
+		var invoice = res[0];
+		
+		$('#partner_name').val(invoice.partner_id);
+		$('#customer_name').val(invoice.customer_name);
+		$('#invoice_number').val(invoice.invoice_number);
+		$('#invoice_date').data('kendoDatePicker').value(invoice.invoice_date);
+		$('#due_date').data('kendoDatePicker').value(invoice.due_date);
+		$('#amount').val(invoice.amount);
+		$('#discount_id').val(invoice.discount_id);
+		$('#discount').val(invoice.discount);
+		$('#discount_amount').val(invoice.discount_amount);
+		$('#account_number').val(invoice.account_number);
+		$('#model').val(invoice.model);
+		$('#reference_number').val(invoice.reference_number);
 	});
 
 	$('#discount_id').change(function() {

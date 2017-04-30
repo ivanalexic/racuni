@@ -6,7 +6,6 @@ var id = urlParam('id');
 
 $('document').ready(function() {
 	$('.k-grid-createNew').on('click', function() {
-		console.log('click');
 		location.href = '/invoice-new';
 	})
 });
@@ -20,7 +19,7 @@ var grid = $("#invoicesGrid").kendoGrid({
 	dataSource: {
 		transport: {
 			read: {
-				url: "/api/partners/" + id + "/invoices/all",
+				url: "/api/invoices/all",
 				dataType: "json"
 			}
 		},
@@ -75,7 +74,7 @@ var grid = $("#invoicesGrid").kendoGrid({
 	columns: [{
 		width: 150,
 		field: "partner_name",
-		template: "<a href='/invoice-edit?id=#=invoice_id#' title='Izmeniti'><span class='glyphicon glyphicon-pencil'></span></a>&nbsp;#=partner_name#",
+		template: "<a href='/invoice?id=#=invoice_id#' title='Izmeniti'><span class='glyphicon glyphicon-eye-open'></span></a>&nbsp;#=partner_name#",
 		title: "Partner"
 	},{
 		width: 80,

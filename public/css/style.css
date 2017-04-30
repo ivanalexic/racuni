@@ -4,17 +4,17 @@ html {
 }
 
 body {
-    /* Margin bottom by footer height */
-    background: rgba(0, 53, 171, 0.5);
-    /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(rgb(248, 248, 248), rgba(0, 53, 171, 0.3));
-    /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(rgb(248, 248, 248), rgba(0, 53, 171, 0.3));
-    /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(rgb(248, 248, 248), rgba(0, 53, 171, 0.3));
-    /* For Firefox 3.6 to 15 */
-    background: linear-gradient(rgb(248, 248, 248), rgba(0, 53, 171, 0.3));
-    /* Standard syntax */
+    /*!* Margin bottom by footer height *!*/
+    /*background: rgba(0, 53, 171, 0.5);*/
+    /*!* For browsers that do not support gradients *!*/
+    /*background: -webkit-linear-gradient(rgb(248, 248, 248), rgba(0, 53, 171, 0.3));*/
+    /*!* For Safari 5.1 to 6.0 *!*/
+    /*background: -o-linear-gradient(rgb(248, 248, 248), rgba(0, 53, 171, 0.3));*/
+    /*!* For Opera 11.1 to 12.0 *!*/
+    /*background: -moz-linear-gradient(rgb(248, 248, 248), rgba(0, 53, 171, 0.3));*/
+    /*!* For Firefox 3.6 to 15 *!*/
+    /*background: linear-gradient(rgb(248, 248, 248), rgba(0, 53, 171, 0.3));*/
+    /*!* Standard syntax *!*/
 }
 
 body p, a, label, span, th, td, button {
@@ -22,7 +22,11 @@ body p, a, label, span, th, td, button {
 }
 
 nav {
-    box-shadow: #999 0 0 15px;
+    box-shadow: #b7b7b7 0 0 25px;
+}
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #fcfcfc;
 }
 
 .flag-en {
@@ -46,7 +50,7 @@ nav {
 }
 
 hr {
-    box-shadow: cornflowerblue 0 7px 16px;
+    /*box-shadow: cornflowerblue 0 4px 15px;*/
 }
 
 footer {
@@ -87,9 +91,18 @@ label {
     color: #555;
 }
 
+.parsley-errors-list {
+    list-style-type: none;
+    -webkit-padding-start: 5px;
+}
+
 .parsley-errors-list li {
     color: #ff0000;
     font-size: 10px;
+}
+
+.margin-right-10 {
+    margin-right: 10px;
 }
 
 @media (min-width: 1200px) {

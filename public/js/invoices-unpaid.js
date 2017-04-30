@@ -4,7 +4,6 @@
 
 $('document').ready(function() {
 	$('.k-grid-createNew').on('click', function() {
-		console.log('click');
 		location.href = '/invoice-new';
 	})
 });
@@ -73,7 +72,7 @@ var grid = $("#invoicesUnpaidGrid").kendoGrid({
 	columns: [{
 		width: 150,
 		field: "partner_name",
-		template: "<a href='/invoice-edit?id=#=invoice_id#' title='Izmeniti'><span class='glyphicon glyphicon-pencil'></span></a>&nbsp;#=partner_name#",
+		template: "<a href='/invoice-pay?id=#=invoice_id#' title='Platiti'><span class='glyphicon glyphicon-credit-card'></span></a>&nbsp;#=partner_name#",
 		title: "Partner"
 	},{
 		width: 80,

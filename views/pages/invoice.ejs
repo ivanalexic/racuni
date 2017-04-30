@@ -5,7 +5,7 @@
 	<% include ../partials/head-kendo %>
 	<% include ../partials/head-common %>
 
-	<title>Računi - Novo zaduženje</title>
+	<title>Računi - Izmena računa</title>
 
 </head>
 <body>
@@ -15,14 +15,14 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12">
-			<h4>Unos novog zaduženja</h4>
+			<h4>Izmena računa</h4>
 		</div>
 	</div>
 	<form id="invoice-form" data-parsley-validate="">
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-md-4">
 				<label for="partner_name"><%= lang.name %></label>
-				<select id="partner_name" name="partner_name" type="text" class="input-sm form-control" autofocus data-parsley-trigger="blur" required="">
+				<select id="partner_name" name="partner_name" type="text" class="input-sm form-control" autofocus data-parsley-trigger="blur" required="" disabled="disabled">
 					<option value="" selected disabled hidden>Izaberi</option>
 					<% partners.forEach(function(partner) { %>
 					<option value="<%= partner.partner_id %>"><%= partner.partner_name %></option>
@@ -31,8 +31,7 @@
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-offset-1 col-md-4">
 				<label for="invoice_number">Broj računa</label>
-				<input id="invoice_number" name="invoice_number" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" />
-
+				<input id="invoice_number" name="invoice_number" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" disabled="disabled" />
 			</div>
 		</div>
 		<div class="row">
@@ -43,7 +42,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-md-4">
 				<label for="customer_name"><%= lang.user %></label>
-				<input id="customer_name" name="customer_name" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" />
+				<input id="customer_name" name="customer_name" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" disabled="disabled" />
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-offset-1 col-md-4">
 				<div class="row">
@@ -51,17 +50,17 @@
 						<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-12">
 								<label for="account_number"><%= lang.account_number %></label>
-								<input id="account_number" name="account_number" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" />
+								<input id="account_number" name="account_number" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" disabled="disabled" />
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-xs-4 col-sm-4 col-md-4">
 								<label for="model"><%= lang.model %></label>
-								<input id="model" name="model" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" />
+								<input id="model" name="model" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" disabled="disabled" />
 							</div>
 							<div class="col-xs-8 col-sm-8 col-md-8">
 								<label for="reference_number"><%= lang.reference_number %></label>
-								<input id="reference_number" name="reference_number" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" />
+								<input id="reference_number" name="reference_number" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" disabled="disabled" />
 							</div>
 						</div>
 					</div>
@@ -78,17 +77,17 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<label for="invoice_date">Datum izdavanja</label>
-						<input id="invoice_date" name="invoice_date" type="text" class="kendoDatePicker" style="width: 100%" data-parsley-trigger="blur" required="" />
+						<input id="invoice_date" name="invoice_date" type="text" class="kendoDatePicker" style="width: 100%" data-parsley-trigger="blur" required="" disabled="disabled" />
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<label for="due_date">Datum valute</label>
-						<input id="due_date" name="due_date" type="text" class="kendoDatePicker" style="width: 100%" data-parsley-trigger="blur" required="" />
+						<input id="due_date" name="due_date" type="text" class="kendoDatePicker" style="width: 100%" data-parsley-trigger="blur" required="" disabled="disabled" />
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12">
 						<label for="discount_id"><%= lang.discount %></label>
-						<select id="discount_id" name="discount_id" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="">
+						<select id="discount_id" name="discount_id" type="text" class="input-sm form-control" data-parsley-trigger="blur" required="" disabled="disabled">
 							<% discounts.forEach(function(discount) { %>
 							<option value="<%= discount.discount_id %>"><%= discount.discount_type %></option>
 							<% }); %>
@@ -100,14 +99,14 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-offset-6 col-sm-6 col-md-offset-6 col-md-6">
 						<label for="amount">Iznos zaduzenja</label>
-						<input id="amount" name="amount" type="text" class="input-sm form-control text-right" data-parsley-trigger="blur" required="" />
+						<input id="amount" name="amount" type="text" class="input-sm form-control text-right" data-parsley-trigger="blur" required="" disabled="disabled" />
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div id="discount_box" hidden="hidden">
 							<label for="amount">Iznos popusta</label>
-							<input id="discount_amount" name="discount_amount" type="text" class="input-sm form-control text-right" data-parsley-trigger="blur" required="" />
+							<input id="discount_amount" name="discount_amount" type="text" class="input-sm form-control text-right" data-parsley-trigger="blur" required="" disabled="disabled" />
 						</div>
 					</div>
 					<div class="col-xs-126 col-sm-6 col-md-6">
@@ -125,9 +124,17 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-9">
-			<button type="button" class="btn btn-success btn-sm pull-right" id="createInvoice">
-				<span class="glyphicon glyphicon-floppy-save"></span>
-				<%= lang.add %>
+			<button type="button" class="btn btn-primary btn-sm pull-right" id="editInvoice">
+				<span class="glyphicon glyphicon-pencil"></span>
+				Izmeniti
+			</button>
+			<button type="button" class="btn btn-success btn-sm pull-right" id="saveInvoice" style="display: none;">
+				<span class="glyphicon glyphicon-floppy-saved"></span>
+				<%= lang.save %>
+			</button>
+			<button type="button" class="btn btn-danger btn-sm pull-right margin-right-10" id="deleteInvoice">
+				<span class="glyphicon glyphicon-floppy-remove"></span>
+				<%= lang.delete %>
 			</button>
 			<button type="button" class="btn btn-link btn-sm pull-left" onclick="location.href='/partners'">
 				<span class="glyphicon glyphicon-chevron-left"></span>
@@ -143,7 +150,7 @@
 <% include ../partials/body-common %>
 <script src="https://kendo.cdn.telerik.com/2017.1.223/js/kendo.all.min.js"></script>
 <% include ../partials/body-parsley %>
-<script src="js/invoice-new.js"></script>
+<script src="js/invoice-view.js"></script>
 
 </body>
 </html>

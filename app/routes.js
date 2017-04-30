@@ -68,7 +68,39 @@ module.exports = function(app) {
 
 	// ============= /invoice-new ============ //
 	app.get('/invoice-new', function(req, res) {
-		res.render('pages/invoice-new', {allInvoicesTab: true});
+
+		pool.getConnection(function(err, connection) {
+			// get partners before page render
+			connection.query('SELECT * FROM partners', function(err, partners) {
+				// get discounts before page render
+				connection.query('SELECT * FROM discounts', function(err, discounts) {
+					connection.release();
+					res.render('pages/invoice-new', {allInvoicesTab: true, partners: partners, discounts: discounts});
+				});
+			});
+		});
+
+	});
+
+	// ========= /invoice-view ========= //
+	app.get('/invoice', function(req, res) {
+
+		pool.getConnection(function(err, connection) {
+			// get partners before page render
+			connection.query('SELECT * FROM partners', function(err, partners) {
+				// get discounts before page render
+				connection.query('SELECT * FROM discounts', function(err, discounts) {
+					connection.release();
+					res.render('pages/invoice', {partners: partners, discounts: discounts});
+				});
+			});
+		});
+
+	});
+
+	// ========= /invoice-pay ========= //
+	app.get('/invoice-pay', function(req, res) {
+		res.render('pages/invoice-pay');
 	});
 
 	// ============ /reports ============= //

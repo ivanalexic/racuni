@@ -12,6 +12,17 @@ function urlParam(param) {
 	}
 }
 
+function convertDate(dateToConvert) {
+
+	var date = new Date(dateToConvert);
+
+	var d = date.getDate();
+	var m = date.getMonth() + 1;
+	var y = date.getFullYear();
+
+	return y + '-' + m + '-' + d;
+}
+
 function changeLanguage(referer) {
 
 	var lang = $(referer).attr('data-lang');

@@ -200,6 +200,41 @@ module.exports = function(app, pool) {
 
 	/* INVOICES */
 
+	// ==== GET invoices by filter ==== //
+	app.get('/api/invoices/all', function(req, res) {
+
+		pool.getConnection(function(err, connection) {
+
+			connection.query('SELECT * FROM invoices JOIN partners ON invoices.partner_id = partners.partner_id JOIN statuses ON invoices.status_id = statuses.status_id JOIN discounts ON invoices.discount_id = discounts.discount_id', function(err, rows) {
+				connection.release();
+				if (err) {
+					console.log('Error while getting invoices: %s ', err);
+				} else {
+					res.json(rows);
+				}
+			});
+
+		});
+
+	});
+
+	// ==== GET invoices by filter ==== //
+	app.get('/api/invoices/unpaid', function(req, res) {
+
+		pool.getConnection(function(err, connection) {
+
+			connection.query('SELECT * FROM invoices JOIN partners ON invoices.partner_id = partners.partner_id JOIN statuses ON invoices.status_id = statuses.status_id JOIN discounts ON invoices.discount_id = discounts.discount_id WHERE invoices.status_id = 0 OR invoices.status_id = 3', function(err, rows) {
+				connection.release();
+				if (err) {
+					console.log('Error while getting invoices: %s ', err);
+				} else {
+					res.json(rows);
+				}
+			});
+
+		});
+
+	});
 
 	// ==== GET invoices (:id optional) ==== //
 	app.get('/api/invoices/:id?', function(req, res) {
@@ -207,7 +242,7 @@ module.exports = function(app, pool) {
 		var id = req.params.id;
 		var query;
 		if (typeof (id) !== 'undefined') {
-			query = 'SELECT * FROM invoices WHERE id = "' + id + '"' ;
+			query = 'SELECT * FROM invoices WHERE invoice_id = "' + id + '"' ;
 		} else {
 			query = 'SELECT * FROM invoices';
 		}
